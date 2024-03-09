@@ -1,0 +1,44 @@
+{
+  "ProductistL": [
+    {
+      "productName": "qsdfg",
+      "category": "Clothers",
+      "price": 4,
+      "quantity": 4,
+      "freshness": "yyy",
+      "description": "aazertyhnhbdsrtdfg",
+      "date": "2023-03-15T23:00:00.000Z",
+      "id": 2
+    },
+    {
+      "productName": "qsdfg",
+      "category": "Electronics",
+      "price": 1,
+      "quantity": 3,
+      "freshness": "ooo",
+      "description": "ftvtubyihnui",
+      "date": "2023-03-23T23:00:00.000Z",
+      "id": 3
+    }
+  ],
+  "users": [
+    {
+      "username": "omar",
+      "email": "omar@gmail.com",
+      "password": "12345678",
+      "confirmPassword": "12345678",
+      "status": "Vendeur",
+      "phone": "50919311",
+      "id": 1
+    },
+    {
+      "username": "omar",
+      "email": "omar@gmail.com",
+      "password": "qsdfg",
+      "confirmPassword": "qsdf",
+      "status": "Vendeur",
+      "phone": "50919311",
+      "id": 2
+    }
+  ]
+}

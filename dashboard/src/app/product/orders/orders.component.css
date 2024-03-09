@@ -1,0 +1,27 @@
+table {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 10%;
+  }
+  
+  .container{
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .Terminé {
+    color: green;
+  }
+  
+  .En-Cours {
+    color: red;
+  }
+  
+  

@@ -1,0 +1,40 @@
+mat-form-field{
+  width: 100%;
+}
+.example-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+  align-items: flex-start;
+}
+
+.example-radio-button {
+  margin: 5px;
+}
+
+button.example-custom-date-class {
+  background: orange;
+  border-radius: 100%;
+  width: 100%;
+
+}
+
+
+
+
+.mat-raised-button.mat-success{
+  color: #f0fff3;
+  background-color: #055518;
+}
+
+.mat-button.mat-success:hover,
+.mat-raised-button.mat-success:hover {
+  background-color: #059927;
+}
+
+.p {
+text-align: center;
+font-size: larger;
+color: red;
+}
+

@@ -1,0 +1,53 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+
+/* login.component.css */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ajustez la hauteur selon vos besoins */
+}
+
+.message {
+  font-size: 2em; /* Ajustez la taille de la police selon vos besoins */
+  margin-bottom: 20px;
+}
+
+.login-button {
+  padding: 20px 40px; /* Ajustez le rembourrage selon vos besoins */
+  font-size: 1.5em; /* Ajustez la taille de la police selon vos besoins */
+  border-radius: 10px; /* Ajustez le rayon de la bordure selon vos besoins */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre du bouton */
+  cursor: pointer;
+  transition: all 0.3s ease; /* Transition en douceur pour les changements d'état */
+}
+
+.login-button:hover {
+  transform: translateY(-2px); /* Légère élévation lors du survol */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée lors du survol */
+}
+/* home.component.css */
+.message {
+  font-size: 10em;
+  font-family: 'Courier New', Courier, monospace;
+  /* background-color: #f0f0f0; */
+  padding: 10px 20px;
+  border-radius: 10px;
+  animation: fadeInOut 1s ease-in-out 5s forwards;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

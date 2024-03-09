@@ -1,0 +1,131 @@
+<h1 mat-dialog-title>Add Product</h1>
+
+    <form [formGroup]="productForm" >
+      <div mat-dialog-content class="content">
+
+
+          <mat-form-field appearance="outline">
+            <mat-label>Product Category</mat-label>
+            <mat-select formControlName="category" placeholder="Select a category" (selectionChange)="onCategorySelected($event)">
+              <mat-option *ngFor="let category of category" [value]="category._id">{{ category.name }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Nom produit</mat-label>
+                <input matInput type="text"  formControlName="name">
+            </mat-form-field>
+
+        </div>
+
+
+          <div class="row">
+            <mat-form-field appearance="outline">
+              <mat-label>Price</mat-label>
+              <input matInput type="number" min="1" formControlName="price">
+          </mat-form-field>
+          </div>
+
+          <div class="row">
+            <mat-form-field appearance="outline">
+              <mat-label>Description</mat-label>
+              <input matInput formControlName="description">
+          </mat-form-field>
+          </div>
+
+          <div formArrayName="attributeSets">
+            <div *ngFor="let attributeGroup of attributesFormArray.controls; let i = index" [formGroupName]="i">
+              <mat-form-field>
+                <input matInput formControlName="name" placeholder="Attribute Name">
+              </mat-form-field>
+          
+              <ng-container *ngIf="!isSizeAttribute(i) && !isColorAttribute(i) && !isGenderAttribute(i)">
+                <mat-form-field>
+                  <input matInput formControlName="value" placeholder="Attribute Value">
+                </mat-form-field>
+              </ng-container>
+          
+              <ng-container *ngIf="isSizeAttribute(i) || isColorAttribute(i) || isGenderAttribute(i)">
+                <mat-form-field>
+                  <mat-label>Attribute Value</mat-label>
+                  <mat-select formControlName="value">
+                    <mat-option value="S-M-L" *ngIf="isSizeAttribute(i)">S-M-L</mat-option>
+                    <mat-option value="par age" *ngIf="isSizeAttribute(i)">par age</mat-option>
+                    <mat-option value="par numero" *ngIf="isSizeAttribute(i)">par numero</mat-option>
+                    <mat-option value="noir" *ngIf="isColorAttribute(i)">noir</mat-option>
+                    <mat-option value="rouge" *ngIf="isColorAttribute(i)">rouge</mat-option>
+                    <mat-option value="bleu" *ngIf="isColorAttribute(i)">bleu</mat-option>
+                    <mat-option value="jaune" *ngIf="isColorAttribute(i)">jaune</mat-option>
+                    <mat-option value="male" *ngIf="isGenderAttribute(i)">male</mat-option>
+                    <mat-option value="female" *ngIf="isGenderAttribute(i)">female</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </ng-container>
+          
+              <div *ngIf="isSizeAttribute(i)">
+                <ng-container *ngIf="productForm.get('attributeSets.' + i + '.value')?.value === 'S-M-L'">
+                  <mat-form-field>
+                    <mat-label>Size</mat-label>
+                    <mat-select formControlName="value">
+                      <mat-option value="S">S</mat-option>
+                      <mat-option value="XS">XS</mat-option>
+                      <mat-option value="M">M</mat-option>
+                      <mat-option value="L">L</mat-option>
+                      <mat-option value="XL">XL</mat-option>
+                      <mat-option value="XXL">XXL</mat-option>
+                      <mat-option value="XXXL">XXXL</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </ng-container>
+                <ng-container *ngIf="productForm.get('attributeSets.' + i + '.value')?.value === 'par age'">
+                  <mat-form-field>
+                    <mat-label>Age Range</mat-label>
+                    <mat-select formControlName="value">
+                      <mat-option value="nouveau né">nouveau né</mat-option>
+                      <mat-option value="enfant">enfant</mat-option>
+                      <mat-option value="adulte">adulte</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </ng-container>
+                <ng-container *ngIf="productForm.get('attributeSets.' + i + '.value')?.value === 'par numero'">
+                  <mat-form-field>
+                    <mat-label>Number Range</mat-label>
+                    <mat-select formControlName="value">
+                      <mat-option value="30">30</mat-option>
+                      <mat-option value="32">32</mat-option>
+                      <mat-option value="34">34</mat-option>
+                      <mat-option value="36">36</mat-option>
+                      <mat-option value="38">38</mat-option>
+                      <mat-option value="40">40</mat-option>
+                      <mat-option value="42">42</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </ng-container>
+              </div>
+          
+              <button mat-icon-button (click)="removeAttributeGroup(i)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </div>
+          
+          <button mat-raised-button (click)="addAttributeGroup()">Add Attribute</button>
+          
+          
+          
+          
+
+
+          <div class="form-group">
+            <h4 for="images">Image</h4>
+            <input type="file" id="image" (change)="onFileSelected($event)">
+          </div>
+
+      </div>
+
+  </form>
+      <div mat-dialog-actions class="action">
+          <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+          <button mat-raised-button color="primary" type="submit" (click)="onFormSubmit()">{{data ? 'Update': 'Save'}}</button>
+      </div>

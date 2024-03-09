@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+
+  <span>Market</span>
+
+  <span class="example-spacer"></span>
+
+  <div class="example-button-row">
+    <button mat-raised-button color="warn" [routerLink]="'/stock/' + vendorId">Stock</button>
+    <button mat-raised-button color="warn" [routerLink]="'/orders/' + vendorId">Orders</button>
+    <button mat-raised-button color="warn" (click)="openDialog()">Add product</button>
+  </div>
+</mat-toolbar>
+<div>
+  <app-table-product [vendorId]="vendorId"></app-table-product>
+</div>

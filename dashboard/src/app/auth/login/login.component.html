@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>Login</h1>
+<div mat-dialog-content>
+  <form [formGroup]="userForm" (ngSubmit)="signin()">
+    <mat-form-field appearance="outline">
+      <mat-label>E-mail</mat-label>
+      <input formControlName="email" type="email" matInput placeholder="*****@****.***">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Mot de passe</mat-label>
+      <input formControlName="password" type="password" matInput placeholder="password">
+    </mat-form-field>
+
+
+    <div mat-dialog-action [align]="'center'">
+    <button style="margin-left: 8px;" mat-raised-button color="success"  >Se connecter</button>
+    </div>
+
+  </form>
+</div>
+
+
