@@ -1,0 +1,140 @@
+
+<ng-container *ngIf="seachComponent; else elseBlock">
+    <div class="offcanvas-overlay"></div>
+
+    <!-- Page Title/Header Start -->
+    <div class="page-title-section section" data-bg-image="assets/images/bg/page-title-1.webp">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="page-title">
+                        <h1 class="title">Search: {{ keyword }}</h1>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a routerLink="/accueil">Home</a></li>
+                            <li class="breadcrumb-item"><a  routerLink="/shop">Shop</a></li>
+                            <li class="breadcrumb-item active">Search</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page Title/Header End -->
+
+    <!-- Shop Products Section Start -->
+    <div class="section section-padding pt-0">
+        <div class="section learts-mt-70">
+            <div class="container">
+                <!-- Products Start -->
+                <div id="shop-products"
+                    class="products isotope-grid row row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1">
+
+                    <div class="grid-item col featured" *ngFor="let product of products">
+                        <div class="product">
+                            <div class="product-thumb">
+                                <a [href]=" 'product-details?id='+product._id " class="image">
+                                    <img [src]="product.image" alt="Product Image">
+                                    <img class="image-hover " [src]="product.image" alt="Product Image">
+                                </a>
+                                <!-- <a href="wishlist.html" class="add-to-wishlist hintT-left" data-hint="Add to wishlist"><i class="far fa-heart"></i></a> -->
+                            </div>
+                            <div class="product-info">
+                                <h6 class="title"><a [href]=" 'product-details?id='+product._id ">{{ product.name }}</a>
+                                </h6>
+                                <span class="price">
+                                    ${{ product.price }}
+                                </span>
+                                <div class="product-buttons">
+                                    <!-- <a href="#quickViewModal" data-bs-toggle="modal" class="product-button hintT-top" data-hint="Quick View"><i class="fas fa-search"></i></a> -->
+                                    <a href="#" class="product-button hintT-top" data-hint="Add to Cart"><i
+                                            class="fas fa-shopping-cart"></i></a>
+                                    <!-- <a href="#" class="product-button hintT-top" data-hint="Compare"><i class="fas fa-random"></i></a> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Products End -->
+                <div class="text-center learts-mt-70">
+                    <a href="#" class="btn btn-dark btn-outline-hover-dark"><i class="ti-plus"></i> More</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Shop Products Section End -->
+</ng-container>
+
+<ng-template #elseBlock>
+    <div class="offcanvas-overlay"></div>
+
+    <!-- Page Title/Header Start -->
+    <div class="breadcrumb-section">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="page-title">
+                <h1>Shop</h1>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <nav aria-label="breadcrumb" class="theme-breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a routerLink="/accueil">Home</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Shop</li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- Page Title/Header End -->
+
+    <!-- Shop Products Section Start -->
+    <div class="section section-padding pt-0">
+        <!-- Shop Toolbar Start -->
+        <div class="shop-toolbar border-bottom">
+            <div class="container">
+                <div class="row learts-mb-n20">
+                    <!-- Isotop Filter Start -->
+                    <div class="col-md col-12 align-self-center learts-mb-20">
+                        <div class="isotope-filter shop-product-filter" data-target="#shop-products">
+                            <button type="submit" class="btn btn-solid" id="mc-submit" [ngClass]="{'active': activeAll}"
+                            routerLink="/shop">all</button>
+                            <button type="submit" class="btn btn-solid" id="mc-submit" *ngFor="let category of categories" 
+                                 (click)="onShowCategory(category)">
+                                {{ category.name }}
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Isotop Filter End -->
+
+
+                </div>
+            </div>
+        </div>
+        <!-- Shop Toolbar End -->
+
+
+          
+        <!-- <app-adresse></app-adresse> -->
+
+
+
+        
+
+        <mat-grid-list class="product-box-shop" *ngIf="products && products.length" gutterSize="16" [cols]="cols" [rowHeight]="rowHeight">
+            <mat-grid-tile *ngFor="let product of products">
+              <app-product-box-shop
+                [product]="product"
+                class="w-full product-box-shop" [fullWidthMode]="cols === 1">
+              </app-product-box-shop>
+            </mat-grid-tile>
+          </mat-grid-list>
+          
+
+    </div>
+    <!-- Shop Products Section End -->
+</ng-template>
+

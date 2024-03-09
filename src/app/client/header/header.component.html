@@ -1,0 +1,339 @@
+<!-- <div class="loader_skeleton">
+  <div class="top-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="header-contact">
+            <ul>
+              <li>Welcome to Our top In tech</li>
+              <li><i class="fa fa-phone" aria-hidden="true"></i>Call Us:29708865</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-6 text-end">
+          <ul class="header-dropdown">
+            <li class="mobile-wishlist"><a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
+            </li>
+            <li class="onhover-dropdown mobile-account"> <i class="fa fa-user" aria-hidden="true"></i>
+              My Account
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <header>
+    <div class="container">
+
+    </div>
+  </header>
+  <div class="home-slider">
+    <div class="home"></div>
+  </div>
+  <section class="collection-banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="ldr-bg">
+            <div class="contain-banner">
+              <div>
+                <h4></h4>
+                <h2></h2>
+                <h6></h6>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="ldr-bg">
+            <div class="contain-banner">
+              <div>
+                <h4></h4>
+                <h2></h2>
+                <h6></h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="container section-b-space">
+    <div class="row section-t-space">
+      <div class="col-lg-6 offset-lg-3">
+        <div class="product-para">
+          <p class="first"></p>
+          <p class="second"></p>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="no-slider row">
+          <div class="product-box">
+            <div class="img-wrapper"></div>
+            <div class="product-detail">
+              <h4></h4>
+              <h5></h5>
+              <h5 class="second"></h5>
+              <h6></h6>
+            </div>
+          </div>
+          <div class="product-box">
+            <div class="img-wrapper"></div>
+            <div class="product-detail">
+              <h4></h4>
+              <h5></h5>
+              <h5 class="second"></h5>
+              <h6></h6>
+            </div>
+          </div>
+          <div class="product-box">
+            <div class="img-wrapper"></div>
+            <div class="product-detail">
+              <h4></h4>
+              <h5></h5>
+              <h5 class="second"></h5>
+              <h6></h6>
+            </div>
+          </div>
+          <div class="product-box">
+            <div class="img-wrapper"></div>
+            <div class="product-detail">
+              <h4></h4>
+              <h5></h5>
+              <h5 class="second"></h5>
+              <h6></h6>
+            </div>
+          </div>
+          <div class="product-box">
+            <div class="img-wrapper"></div>
+            <div class="product-detail">
+              <h4></h4>
+              <h5></h5>
+              <h5 class="second"></h5>
+              <h6></h6>
+            </div>
+          </div>
+          <div class="product-box">
+            <div class="img-wrapper"></div>
+            <div class="product-detail">
+              <h4></h4>
+              <h5></h5>
+              <h5 class="second"></h5>
+              <h6></h6>
+            </div>
+          </div>
+          <div class="product-box">
+            <div class="img-wrapper"></div>
+            <div class="product-detail">
+              <h4></h4>
+              <h5></h5>
+              <h5 class="second"></h5>
+              <h6></h6>
+            </div>
+          </div>
+          <div class="product-box">
+            <div class="img-wrapper"></div>
+            <div class="product-detail">
+              <h4></h4>
+              <h5></h5>
+              <h5 class="second"></h5>
+              <h6></h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- loader end -->
+
+
+<!-- header start -->
+<header>
+  <div class="mobile-fix-option"></div>
+  <div class="top-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="header-contact">
+            <ul>
+              <li>Welcome to Our TOP¨IN TECH</li>
+              <li><i class="fa fa-phone" aria-hidden="true"></i>Call Us: 29708865</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-6 text-end">
+          <!-- <ul class="header-dropdown"  *ngIf="!authenticated">
+            <li class="mobile-wishlist"><a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
+            </li>
+            <li class="onhover-dropdown mobile-account"> <i class="fa fa-user" aria-hidden="true"></i>
+              My Account
+              <ul class="onhover-show-div">
+                <li><a routerLink="/login">Login</a></li>
+                <li><a routerLink="/register">register</a></li>
+
+              </ul>
+            </li>
+          </ul> -->
+          <ul class="header-dropdown" *ngIf="!authenticated">
+            <li class="mobile-wishlist"><a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a></li>
+            <li class="onhover-dropdown mobile-account"> <i class="fa fa-user" aria-hidden="true"></i>
+              My Account
+              <ul class="onhover-show-div">
+                <li><a routerLink="/login">Login</a></li>
+                <li><a routerLink="/register">Register</a></li>
+              </ul>
+            </li>
+          </ul>
+          
+          <ul class="header-dropdown" *ngIf="authenticated">
+            <li class="mobile-wishlist"><a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a></li>
+            <li class="onhover-dropdown mobile-account"> <i class="fa fa-user" aria-hidden="true"></i>
+              My Account
+              <ul class="onhover-show-div">
+                <li><a [routerLink]="['/profileClient', idUser]">Profile</a></li>
+              </ul>
+            </li>
+            <li class="onhover-dropdown mobile-account">
+              <i class="fa fa-user" aria-hidden="true"></i>
+              {{login}}
+              <a (click)="logout()">logout</a>
+            </li>
+            
+          </ul>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="main-menu">
+          <div class="menu-left">
+
+            <div class="brand-logo">
+              <a href="index.html"><img src="assets/LOGO.jpg" width="150px" height="150px"
+                                        class="img-fluid blur-up lazyload" alt=""></a>
+            </div>
+          </div>
+          <div class="menu-right pull-right">
+            <div>
+              <nav id="main-nav">
+                <div class="toggle-nav"><i class="fa fa-bars sidebar-bar"></i></div>
+                <ul id="main-menu" class="sm pixelstrap sm-horizontal">
+                  <li>
+                    <div class="mobile-back text-end">Back<i class="fa fa-angle-right ps-2"
+                    aria-hidden="true"></i></div>
+                  </li>
+                  <li><a routerLink="/accueil">Home</a></li>
+                  <li><a routerLink="/shop">  Shop</a></li>
+                  <li>
+                    <!-- <a href="#">Categorie</a>
+                    <ul>
+                      <li  *ngFor="let category of categories" [value]="category">{{ category.name }}</li>
+                    </ul>
+                  </li> -->
+                  <li><a routerLink="/about us">  about us</a></li>
+
+                  <!-- <li><a routerLink="/avis" *ngIf="authenticated">Avis</a></li>
+                  <li><a routerLink="/profileClient" *ngIf="authenticated">Profile</a></li>
+                  <li><a routerLink="/Historique" *ngIf="authenticated">Historique</a></li>
+                  <li><a routerLink="/quiz"  *ngIf="authenticated">Quiz</a></li>
+                  <li><a routerLink="/adresse" *ngIf="authenticated">Adresse</a></li>
+                  <li><a routerLink="/contactClient" *ngIf="authenticated">Contact us</a></li> -->
+                </ul>
+              </nav>
+            </div>
+            <div>
+              <div class="icon-nav">
+                <ul>
+
+                <!-- <li class="onhover-div mobile-cart"> 
+                    <div><img src="../assets/client/images/icon/cart.png"
+                              class="img-fluid blur-up lazyload" alt=""> <i
+                      class="ti-shopping-cart"></i></div>
+
+
+                    <span class="cart_qty_cls"    >{{ListCountPanier}}</span>
+                    <ul class="show-div shopping-cart">
+                      <li *ngFor="let item of ListPanier">
+                        <div class="media" >
+                          <a href="#"><img alt="" class="me-3"
+                            src="/api/{{item.produit.image}}"></a>
+                          <div class="media-body">
+                            <a href="#">
+                              <h4>{{item.produit.nom}}</h4>
+                            </a>
+                            <h4><span>{{item.quantite}}x {{item.newprix}} TND</span></h4>
+                          </div>
+                        </div>
+                        <div class="close-circle"><a ><i class="fa fa-times"
+                                                                 aria-hidden="true"></i></a></div>
+                      </li>
+
+                      <li>
+                        <div class="total" *ngIf="totalePrixPanier != 0">
+                          <h5>subtotal : <span>{{totalePrixPanier}} TND</span></h5>
+                        </div>
+                        <div class="total" style="text-align: center;" *ngIf="totalePrixPanier == 0">
+                          <h5 ><span style="color: red; "> votre panier est  Vide !!!</span></h5>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="buttons"><a routerLink="/cart" class="view-cart">view
+                          cart</a> <a routerLink="/checkout" class="checkout">checkout</a></div>
+                      </li>
+                    </ul>
+
+
+                </li> -->
+
+                <li class="onhover-div mobile-cart"> 
+                  <div>
+                      <img src="../assets/client/images/icon/cart.png" class="img-fluid blur-up lazyload" alt=""> 
+                  </div>
+              
+                  <span class="cart_qty_cls">{{itemsQuantity}}</span>
+                  <ul class="show-div shopping-cart">
+                      <li *ngFor="let item of cart.items">
+                          <div class="media">
+                              <a href="#">
+                                <img [src]="getPlatImageUrl(item.image)" class="img-fluid" alt="plat-img" width="70" height="5">
+                              </a>
+                              <div class="media-body">
+                                  <a href="#">
+                                      <h4>{{item.name}}</h4>
+                                  </a>
+                                  <h4><span>{{item.quantity}}x {{item.price | currency:' Dt '}}</span></h4>
+                              </div>
+                          </div>
+                          <div class="close-circle"><a (click)="onRemoveFromCart(item)"><i class="fa fa-times" aria-hidden="true"></i></a></div>
+                      </li>
+              
+                      <li>
+                          <div class="total" *ngIf="getTotal(cart.items) != 0">
+                              <h5>subtotal : <span>{{getTotal(cart.items)| currency:' Dt '}}</span></h5>
+                          </div>
+                          <div class="total" style="text-align: center;" *ngIf="getTotal(cart.items) == 0">
+                              <h5><span style="color: red;">votre panier est Vide !!!</span></h5>
+                          </div>
+                      </li>
+                      <li>
+                          <div class="buttons">
+                              <a routerLink="/cart" class="view-cart">view cart</a> 
+                              <a routerLink="/checkout" class="checkout">checkout</a>
+                          </div>
+                      </li>
+                  </ul>
+              </li>
+              
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,22 @@
+.box {
+  width: 40%;
+  margin:50px auto;
+  height: 500px;
+}
+li {
+  font-size: 17px;
+  margin: 20px 0;
+}
+img {
+  max-width: 300px;
+  min-height: 400px;
+}
+
+.in-stock {
+  color: green;
+}
+
+.out-of-stock {
+  color: red;
+}
+

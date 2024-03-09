@@ -1,0 +1,103 @@
+<mat-card class="max-w-7xl mx-auto" *ngIf="dataSource.length">
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 w-full">
+
+    <ng-container matColumnDef="product">
+      <th mat-header-cell *matHeaderCellDef> Image du produit </th>
+      <td mat-cell *matCellDef="let product">
+        <img [src]="getPlatImageUrl(product.image)" class="img-fluid" alt="plat-img" width="200" height="200">
+      </td>
+      <td mat-footer-cell *matFooterCellDef>
+        <button type="submit" class="btn btn-solid" id="mc-submit" routerLink="/shop">
+          Start shopping
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Nom du produit </th>
+      <td mat-cell *matCellDef="let product">
+        <span class="truncate max-w-xs block">{{product.name}}</span>
+      </td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef> Prix </th>
+      <td mat-cell *matCellDef="let product">
+        {{product.price | currency:'Dt '}}
+      </td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+
+    <ng-container matColumnDef="quantity">
+      <th mat-header-cell *matHeaderCellDef> Quantité </th>
+      <td mat-cell *matCellDef="let product">
+        <div><i class="ti-minus"(click)="onRemoveQuantity(product)"></i>
+        </div>
+        <span>{{product.quantity}}</span>
+        <div><i class="ti-plus" (click)="onAddQuantity(product)"></i>
+        </div>
+
+      </td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+
+    <ng-container matColumnDef="total">
+      <th mat-header-cell *matHeaderCellDef> total </th>
+      <td mat-cell *matCellDef="let product">
+        <span class="bold-text" >{{product.quantity * product.price | currency:'Dt '}}</span>
+      </td>
+      <td mat-footer-cell *matFooterCellDef>
+        <span class="font-bold py-5 block">
+          <span class="bold-text">{{getTotal(cart.items) | currency:'Dt '}}</span>
+        </span>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="attributes">
+      <th mat-header-cell *matHeaderCellDef> Caracteristiques </th>
+      <td mat-cell *matCellDef="let product">
+        <ul>
+          <li *ngFor="let attribute of product.attributes">
+           <p> {{ attribute.name }}: {{ attribute.value }} </p>
+          </li>
+        </ul>
+      </td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+
+
+
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef>
+        <button type="submit" class="btn btn-solid" id="mc-submit" (click)="onClearCart()">
+          Clear All
+        </button>
+      </th>
+      <td mat-cell *matCellDef="let product">
+        <div><i class="ti-close" (click)="onRemoveFromCart(product.attributes)"></i>
+        </div>
+      </td>
+      <td mat-footer-cell *matFooterCellDef>
+      <button class="btn btn-dark btn-outline-hover-dark mt-2"  (click)="checkOut()">
+        Proceed To Checkout
+      </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns:displayedColumns"></tr>
+    <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+
+  </table>
+</mat-card>
+<mat-card class="max-w-7xl mx-auto" *ngIf="!dataSource.length">
+  <p>
+    your Cart is empty
+    <button type="submit" class="btn btn-solid" id="mc-submit" routerLink="/shop">
+      Start shopping
+    </button>
+  </p>
+</mat-card>
+

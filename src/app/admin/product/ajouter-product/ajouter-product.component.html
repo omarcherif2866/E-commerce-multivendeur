@@ -1,0 +1,274 @@
+<h1>Add Product</h1>
+<form [formGroup]="productForm" >
+  <!-- <div class="content">
+    <div class="card-body">
+      <div class="digital-add needs-validation"> -->
+        <div class="row">
+          <div class="col-lg-6 col-md-6">
+            <div class="form-group">
+        <div class="form-group">
+    <div class="row">
+      <div class="col-form-label pt-0">Product Category</div>
+      <select formControlName="category" class="form-control" (selectionChange)="onCategorySelected($event)">
+        <option *ngFor="let category of category" [value]="category._id">{{ category.name }}</option>
+      </select>
+    </div>
+
+
+    <div class="row">
+      <div class="col-form-label">Nom produit</div>
+      <input type="text" formControlName="name" class="form-control">
+    </div>
+
+    <div class="row">
+      <div class="col-form-label">Price</div>
+      <input type="number" min="1" formControlName="price" class="form-control">
+    </div>
+
+    <div class="row">
+      <div class="col-form-label">Description</div>
+      <textarea formControlName="description" class="form-control"></textarea>
+    </div>
+
+    <!-- <div formArrayName="attributeSets">
+      <div *ngFor="let attributeGroup of attributesFormArray.controls; let i = index" [formGroupName]="i">
+        <div class="row">
+          <div class="col-form-label">Attribute Name</div>
+          <input type="text" formControlName="name" class="form-control">
+        </div>
+
+        <div *ngIf="!isSizeAttribute(i) && !isColorAttribute(i) && !isGenderAttribute(i)" class="row">
+          <div class="col-form-label">Attribute Value</div>
+          <input type="text" formControlName="value" class="form-control">
+        </div>
+
+        <div *ngIf="isSizeAttribute(i) || isColorAttribute(i) || isGenderAttribute(i)" class="row">
+          <div class="col-form-label">Attribute Value</div>
+          <select formControlName="value" class="form-control">
+            <option *ngIf="isSizeAttribute(i)" value="S-M-L">S-M-L</option>
+            <option *ngIf="isSizeAttribute(i)" value="par age">par age</option>
+            <option *ngIf="isSizeAttribute(i)" value="par numero">par numero</option>
+            <option *ngIf="isColorAttribute(i)" value="noir">noir</option>
+            <option *ngIf="isColorAttribute(i)" value="rouge">rouge</option>
+            <option *ngIf="isColorAttribute(i)" value="bleu">bleu</option>
+            <option *ngIf="isColorAttribute(i)" value="jaune">jaune</option>
+            <option *ngIf="isGenderAttribute(i)" value="male">male</option>
+            <option *ngIf="isGenderAttribute(i)" value="female">female</option>
+          </select>
+        </div>
+        <div *ngIf="isSizeAttribute(i)">
+          <ng-container *ngIf="productForm.get('attributeSets.' + i + '.value')?.value === 'S-M-L'">
+            <div class="form-group">
+              <label for="size">Size</label>
+              <select formControlName="value" id="size" class="form-control">
+                <option value="S">S</option>
+                <option value="XS">XS</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+                <option value="XXL">XXL</option>
+                <option value="XXXL">XXXL</option>
+              </select>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="productForm.get('attributeSets.' + i + '.value')?.value === 'par age'">
+            <div class="form-group">
+              <label for="ageRange">Age Range</label>
+              <select formControlName="value" id="ageRange" class="form-control">
+                <option value="nouveau né">nouveau né</option>
+                <option value="enfant">enfant</option>
+                <option value="adulte">adulte</option>
+              </select>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="productForm.get('attributeSets.' + i + '.value')?.value === 'par numero'">
+            <div class="form-group">
+              <label for="numberRange">Number Range</label>
+              <select formControlName="value" id="numberRange" class="form-control">
+                <option value="30">30</option>
+                <option value="32">32</option>
+                <option value="34">34</option>
+                <option value="36">36</option>
+                <option value="38">38</option>
+                <option value="40">40</option>
+                <option value="42">42</option>
+              </select>
+            </div>
+          </ng-container>
+        </div>
+        
+        <button type="button" (click)="removeAttributeGroup(i)">Delete</button>
+      </div>
+
+
+      <div *ngIf="showAdditionalAttributes">
+        <div *ngFor="let attributeGroup of attributesFormArray.controls; let i = index" [formGroupName]="i">
+          <div class="row">
+            <div class="col-form-label">Attribute Name</div>
+            <input type="text" formControlName="name" class="form-control">
+          </div>
+  
+          <div *ngIf="!isSizeAttribute(i) && !isColorAttribute(i) && !isGenderAttribute(i)" class="row">
+            <div class="col-form-label">Attribute Value</div>
+            <input type="text" formControlName="value" class="form-control">
+          </div>
+  
+          <div *ngIf="isSizeAttribute(i) || isColorAttribute(i) || isGenderAttribute(i)" class="row">
+            <div class="col-form-label">Attribute Value</div>
+            <select formControlName="value" class="form-control">
+              <option *ngIf="isSizeAttribute(i)" value="S-M-L">S-M-L</option>
+              <option *ngIf="isSizeAttribute(i)" value="par age">par age</option>
+              <option *ngIf="isSizeAttribute(i)" value="par numero">par numero</option>
+              <option *ngIf="isColorAttribute(i)" value="noir">noir</option>
+              <option *ngIf="isColorAttribute(i)" value="rouge">rouge</option>
+              <option *ngIf="isColorAttribute(i)" value="bleu">bleu</option>
+              <option *ngIf="isColorAttribute(i)" value="jaune">jaune</option>
+              <option *ngIf="isGenderAttribute(i)" value="male">male</option>
+              <option *ngIf="isGenderAttribute(i)" value="female">female</option>
+            </select>
+          </div>
+          <div *ngIf="isSizeAttribute(i)">
+            <ng-container *ngIf="productForm.get('attributeSets.' + i + '.value')?.value === 'S-M-L'">
+              <div class="form-group">
+                <label for="size">Size</label>
+                <select formControlName="value" id="size" class="form-control">
+                  <option value="S">S</option>
+                  <option value="XS">XS</option>
+                  <option value="M">M</option>
+                  <option value="L">L</option>
+                  <option value="XL">XL</option>
+                  <option value="XXL">XXL</option>
+                  <option value="XXXL">XXXL</option>
+                </select>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="productForm.get('attributeSets.' + i + '.value')?.value === 'par age'">
+              <div class="form-group">
+                <label for="ageRange">Age Range</label>
+                <select formControlName="value" id="ageRange" class="form-control">
+                  <option value="nouveau né">nouveau né</option>
+                  <option value="enfant">enfant</option>
+                  <option value="adulte">adulte</option>
+                </select>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="productForm.get('attributeSets.' + i + '.value')?.value === 'par numero'">
+              <div class="form-group">
+                <label for="numberRange">Number Range</label>
+                <select formControlName="value" id="numberRange" class="form-control">
+                  <option value="30">30</option>
+                  <option value="32">32</option>
+                  <option value="34">34</option>
+                  <option value="36">36</option>
+                  <option value="38">38</option>
+                  <option value="40">40</option>
+                  <option value="42">42</option>
+                </select>
+              </div>
+            </ng-container>
+          </div>
+          
+          <button type="button" (click)="removeAttributeGroup(i)">Delete</button>
+        </div>
+      </div>
+
+
+
+    </div> -->
+
+<!-- Bloc attributeSets -->
+<div *ngIf="showAdditionalAttributes">
+  <div formArrayName="attributeSets">
+    <div *ngFor="let attributeGroup of attributesFormArray.controls; let i = index" [formGroupName]="i">      
+      <div class="row">
+        <div class="col-form-label">Attribute Name</div>
+        <input type="text" formControlName="name" class="form-control">
+      </div>
+
+      <div *ngIf="!isSizeAttribute(i) && !isColorAttribute(i) && !isGenderAttribute(i)" class="row">
+        <div class="col-form-label">Attribute Value</div>
+        <input type="text" formControlName="value" class="form-control">
+      </div>
+
+      <div *ngIf="isSizeAttribute(i) || isColorAttribute(i) || isGenderAttribute(i)" class="row">
+        <div class="col-form-label">Attribute Value</div>
+        <select formControlName="value" class="form-control">
+          <option *ngIf="isSizeAttribute(i)" value="S-M-L">S-M-L</option>
+          <option *ngIf="isSizeAttribute(i)" value="par age">par age</option>
+          <option *ngIf="isSizeAttribute(i)" value="par numero">par numero</option>
+          <option *ngIf="isColorAttribute(i)" value="noir">noir</option>
+          <option *ngIf="isColorAttribute(i)" value="rouge">rouge</option>
+          <option *ngIf="isColorAttribute(i)" value="bleu">bleu</option>
+          <option *ngIf="isColorAttribute(i)" value="jaune">jaune</option>
+          <option *ngIf="isGenderAttribute(i)" value="male">male</option>
+          <option *ngIf="isGenderAttribute(i)" value="female">female</option>
+        </select>
+      </div>
+      <div *ngIf="isSizeAttribute(i)">
+        <ng-container *ngIf="productForm.get('attributeSets.' + i + '.value')?.value === 'S-M-L'">
+          <div class="form-group">
+            <label for="size">Size</label>
+            <select formControlName="value" id="size" class="form-control">
+              <option value="S">S</option>
+              <option value="XS">XS</option>
+              <option value="M">M</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
+              <option value="XXL">XXL</option>
+              <option value="XXXL">XXXL</option>
+            </select>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="productForm.get('attributeSets.' + i + '.value')?.value === 'par age'">
+          <div class="form-group">
+            <label for="ageRange">Age Range</label>
+            <select formControlName="value" id="ageRange" class="form-control">
+              <option value="nouveau né">nouveau né</option>
+              <option value="enfant">enfant</option>
+              <option value="adulte">adulte</option>
+            </select>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="productForm.get('attributeSets.' + i + '.value')?.value === 'par numero'">
+          <div class="form-group">
+            <label for="numberRange">Number Range</label>
+            <select formControlName="value" id="numberRange" class="form-control">
+              <option value="30">30</option>
+              <option value="32">32</option>
+              <option value="34">34</option>
+              <option value="36">36</option>
+              <option value="38">38</option>
+              <option value="40">40</option>
+              <option value="42">42</option>
+            </select>
+          </div>
+        </ng-container>
+      </div>
+      
+      <button type="button" (click)="removeAttributeGroup(i)">Delete</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+    <button type="button" (click)="addAttributeGroup()">Add Attribute</button>
+    <button type="button" (click)="onAddSubProduct()">Ajouter field sous produit</button>
+
+
+    <div class="form-group">
+      <label for="image">Image</label>
+      <input type="file" id="image" (change)="onFileSelected($event)">
+    </div>
+
+  </div>
+</div>
+</div>
+</div>
+
+  <div class="action">
+    <!-- <button type="button" (click)="cancel()">Cancel</button> -->
+    <button type="submit">save</button>
+  </div>
+</form>
