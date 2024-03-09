@@ -1,0 +1,28 @@
+<mat-card class="product-box-shop" *ngIf="product" [ngClass]="{'text-center': !fullWidthMode}">
+    <div [ngClass]="{'flex': fullWidthMode}">
+      <div>
+        <img class="mb-1 mx-auto"
+             [ngClass]="{'h-[360px]': fullWidthMode}" 
+             [src]="getPlatImageUrl(product.image)" 
+             class="img-fluid" 
+             alt="plat-img" 
+             width="200" 
+             height="200">
+      </div>
+      <div class="w-full" [ngClass]="{'px-8 flex flex-col justify-between': fullWidthMode}">
+        <div>
+          <h5 class="truncate hover:whitespace-normal">{{product.name}} </h5>
+          <p>{{product.category?.name}}</p>
+        </div>
+        <div class="flex flex-col mt-2 product-buttons">
+            <span class="text-red-400">{{ product.price | currency:'Dt '}}</span>
+            <br>
+            <button class="btn btn-dark btn-outline-hover-dark mt-2"  routerLink="/singleProduct/{{product._id}}">
+              Voir details
+            </button>
+          </div>
+          
+      </div>
+    </div>
+  </mat-card>
+  
