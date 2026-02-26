@@ -37,7 +37,7 @@ export class RegisterComponent implements OnInit {
       password: [null, [Validators.required, Validators.minLength(6)]],
       roles: ['', [Validators.required]],
       // recaptcha: ['', Validators.required],
-      // image: [null, [Validators.required]], // Change to accept file input
+      image: [null, [Validators.required]], // Change to accept file input
       email: [null, [Validators.required, Validators.email]],
     });
 
@@ -62,9 +62,9 @@ export class RegisterComponent implements OnInit {
         formData.append('email', this.form.value.email);
         formData.append('password', this.form.value.password);
         formData.append('roles', this.form.value.roles);
-        // formData.append('image', this.form.value.image);
+        formData.append('image', this.form.value.image);
         console.log('Selected role:', this.form.value.roles); // Debugging: Log selected role
-        // console.log('Selected image:', this.form.value.image); // Debugging: Log selected image
+        console.log('Selected image:', this.form.value.image); // Debugging: Log selected image
 
 
         this.service.createAcount(formData) // Assurez-vous que le nom de la méthode est correct
@@ -110,12 +110,12 @@ export class RegisterComponent implements OnInit {
   
   
 
-  // onFileSelected(event: any) {
-  //   const file: File = event.target.files[0];
-  //   if (file) {
-  //     this.form.patchValue({ image: file }); // Mettre à jour la valeur du champ 'image' dans le formulaire
-  //   }
-  // }
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    if (file) {
+      this.form.patchValue({ image: file }); // Mettre à jour la valeur du champ 'image' dans le formulaire
+    }
+  }
 
 }
 
