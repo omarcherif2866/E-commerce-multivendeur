@@ -19,6 +19,7 @@ import { AuthService } from 'src/app/Service/Auth/auth.service';
 export class RegisterComponent implements OnInit {
   role: Role[] = [];
 
+selectedFile: File | null = null;
 
   form!: FormGroup;
 
@@ -111,10 +112,9 @@ export class RegisterComponent implements OnInit {
   
 
   onFileSelected(event: any) {
-    const file: File = event.target.files[0];
-    if (file) {
-      this.form.patchValue({ image: file }); // Mettre à jour la valeur du champ 'image' dans le formulaire
-    }
+  if (event.target.files.length > 0) {
+    this.selectedFile = event.target.files[0];
+  }
   }
 
 }
