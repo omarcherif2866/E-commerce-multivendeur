@@ -38,7 +38,7 @@ selectedFile: File | null = null;
       password: [null, [Validators.required, Validators.minLength(6)]],
       roles: ['', [Validators.required]],
       // recaptcha: ['', Validators.required],
-      image: [null, [Validators.required]], // Change to accept file input
+      // image: [null, [Validators.required]], // Change to accept file input
       email: [null, [Validators.required, Validators.email]],
     });
 
@@ -63,9 +63,11 @@ selectedFile: File | null = null;
         formData.append('email', this.form.value.email);
         formData.append('password', this.form.value.password);
         formData.append('roles', this.form.value.roles);
-        formData.append('image', this.form.value.image);
+        if (this.selectedFile) {
+          formData.append('image', this.selectedFile);
+        }
         console.log('Selected role:', this.form.value.roles); // Debugging: Log selected role
-        console.log('Selected image:', this.form.value.image); // Debugging: Log selected image
+        console.log('Selected image:', this.selectedFile); // Debugging: Log selected image
 
 
         this.service.createAcount(formData) // Assurez-vous que le nom de la méthode est correct
