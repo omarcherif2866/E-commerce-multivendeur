@@ -1,6 +1,6 @@
 
 import Commandes from '../models/commande.js';
-import Products from '../models/Product.js';
+import Products from '../models/product.js';
 import Orders from '../models/order.js';
 
 async function getStockAttribute(attributeList, targetAttributeSet) {

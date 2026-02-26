@@ -94,26 +94,20 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import morgan from 'morgan';
-import cors from 'cors';
 import cookieSession from 'cookie-session';
 import { config as dotenvConfig } from 'dotenv';
 
 dotenvConfig();
 
-import { notFoundError, errorHandler } from './Middelware/error-handler.js';
+import { notFoundError, errorHandler } from './middelware/error-handler.js';
 import AuthRoutes from './routes/auth.js';
-import UsersRoutes from './routes/user.js';
-import RoleRoutes from './routes/Role.js';
-import reclamation_route from './routes/reclamation.js';
-import reclamation_type_route from './routes/type_reclamation.js';
-import PlatsRoutes from './routes/Plats.js';
-import IngredientsRoutes from './routes/Ingredients.js';
-import SpecialitesRoutes from './routes/Specialite.js';
-import EventRoutes from './routes/evenement_route.js';
-import ParticipantRoutes from './routes/participant_route.js';
-import VoteRoutes from './routes/vote_route.js';
-import ReducUserRoutes from './routes/reducUser_route.js';
-import CommandeRoutes from './routes/Commande.js';
+import RoleRoutes from './routes/role.js';
+import OrdersRoutes from './routes/order.js'; //importer le router du fichier routes/game.js
+import ProductsRoutes from './routes/Product.js'; 
+import AuthRoutes from './routes/auth.js';
+import CommandesRoutes from './routes/commande.js';
+import RoleRoutes from './routes/role.js';
+import CategoryRoutes from './routes/category.js';
 
 const app = express();
 const port = process.env.PORT || 9090;

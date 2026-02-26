@@ -1,10 +1,10 @@
-import User  from "../models/User.js";
-import Role  from "../models/Role.js";
+import User  from "../models/user.js";
+import Role  from "../models/role.js";
 import nodemailer from 'nodemailer';
 import crypto from 'crypto';
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
-import Product from "../models/Product.js";
+import Product from "../models/product.js";
 
 
 

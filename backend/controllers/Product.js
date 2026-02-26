@@ -1,4 +1,4 @@
-import Products from '../models/Product.js';
+import Products from '../models/product.js';
 import commande from '../models/commande.js';
 import Commandes from '../models/commande.js';
 import nodemailer from 'nodemailer';

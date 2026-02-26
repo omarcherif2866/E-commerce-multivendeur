@@ -1,8 +1,8 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import nodemailer from 'nodemailer';
-import User  from "../models/User.js";
-import Role  from "../models/Role.js"; // Import the User and Role models
+import User  from "../models/user.js";
+import Role  from "../models/role.js"; // Import the User and Role models
 const jwtsecret = "mysecret";
 
 const generateHashedPassword = async (password) => {
