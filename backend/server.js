@@ -110,7 +110,7 @@ import CategoryRoutes from './routes/category.js';
 const app = express();
 const port = process.env.PORT || 9090;
 const FRONTEND_URL = 'https://ecommercemultivendeur.vercel.app';
-const Dashboard_URL = 'https://ecommercemultivendeurdashbord.vercel.app';
+const DASHBOARD_URL = 'https://ecommercemultivendeurdashbord.vercel.app';
 
 
 // =======================
@@ -153,8 +153,18 @@ await connectDB();
 // =======================
 // ✅ CORS CONFIG (IMPORTANT)
 // =======================
+const allowedOrigins = [
+  FRONTEND_URL,
+  DASHBOARD_URL
+];
+
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", FRONTEND_URL, Dashboard_URL);
+  const origin = req.headers.origin;
+  
+  if (allowedOrigins.includes(origin)) {
+    res.header("Access-Control-Allow-Origin", origin); // ✅ renvoie l'origine exacte
+  }
+  
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
   res.header("Access-Control-Allow-Credentials", "true");
