@@ -110,17 +110,17 @@ import mongoose from 'mongoose';
 
 
 export function getAll(req, res) {
-  console.log(req.params.vendorId)
+  console.log(req.params.vendorId);
 
   Products
-    .find({ownedBy: req.params.vendorId})
-
+    .find({ ownedBy: req.params.vendorId })
+    .populate('category') // ✅
     .then(docs => {
-       console.log(docs)
+      console.log(docs);
       res.status(200).json(docs);
     })
     .catch(err => {
-      res.status(500).json({ error: err });
+      res.status(500).json({ error: err.message });
     });
 }
 
@@ -130,14 +130,15 @@ export async function Deleteproduct(req, res) {
   res.status(200).json({"message":"deleted"});
 }
 
-export function getProductById(req, res){
+export function getProductById(req, res) {
   Products.findById(req.params.id)
-          .then((doc) => {
-            res.status(200).json(doc);
-          })
-          .catch((err) => {
-            res.status(500).json({ error: err });
-          });
+    .populate('category') // ✅
+    .then(doc => {
+      res.status(200).json(doc);
+    })
+    .catch(err => {
+      res.status(500).json({ error: err.message });
+    });
 }
 
 export function putOnce(req, res) {
@@ -170,50 +171,43 @@ export function getProductsByCategory(req, res) {
   const limit = Number(req.query.limit) || 0;
   const sort = req.query.sort == 'desc' ? -1 : 1;
 
-  Products.find({
-    category,
-  })
-    .select('-_id') // Vous pouvez retirer le sélecteur -_id si vous voulez inclure _id
+  Products.find({ category })
+    .populate('category') // ✅
     .limit(limit)
-    .sort({ _id: sort }) // Utilisez _id pour trier par ID
-    .then((plats) => {
+    .sort({ _id: sort })
+    .then(plats => {
       res.json(plats);
     })
-    .catch((err) => console.log(err));
+    .catch(err => console.log(err));
 }
 
 
 export function getAllProducts(req, res) {
-  console.log(req.params.vendorId);
-
   Products.find({})
-    .populate('category') // Utilisez populate pour charger les noms des catégories
-    .exec() // Exécutez la requête
-    .then((docs) => {
-      // Maintenant, chaque produit aura la catégorie avec le nom associé
+    .populate('category') // ✅ déjà présent
+    .then(docs => {
       res.status(200).json(docs);
     })
-    .catch((err) => {
-      res.status(500).json({ error: err });
+    .catch(err => {
+      res.status(500).json({ error: err.message });
     });
 }
 
 
-export function getProductByVendor(req, res)  {
-	const ownedBy = req.params.vendorId;
-	const limit = Number(req.query.limit) || 0;
-	const sort = req.query.sort == 'desc' ? -1 : 1;
+export function getProductByVendor(req, res) {
+  const ownedBy = req.params.vendorId;
+  const limit = Number(req.query.limit) || 0;
+  const sort = req.query.sort == 'desc' ? -1 : 1;
 
-	Products.find({
-		ownedBy,
-	})
-		.limit(limit)
-		.sort({ id: sort })
-		.then((products) => {
-			res.json(products);
-		})
-		.catch((err) => console.log(err));
-};
+  Products.find({ ownedBy })
+    .populate('category') // ✅
+    .limit(limit)
+    .sort({ id: sort })
+    .then(products => {
+      res.json(products);
+    })
+    .catch(err => console.log(err));
+}
 
 
 export async function getAttributeByCategory(req, res) {
