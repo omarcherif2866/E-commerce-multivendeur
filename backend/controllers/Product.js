@@ -1,7 +1,6 @@
 import Products from '../models/product.js';
-import commande from '../models/commande.js';
-import Commandes from '../models/commande.js';
-import nodemailer from 'nodemailer';
+import cloudinary from 'cloudinary';
+
 
 import { validationResult } from "express-validator";
 import mongoose from 'mongoose';
@@ -9,6 +8,11 @@ import mongoose from 'mongoose';
 
 
   export function addOnceProduct(req, res) {
+          // Vérification de l'image de profil
+      const imageFile = req.file;
+      if (!imageFile) {
+        return res.status(400).json({ message: 'Please upload an image' });
+      }
     const attributes = JSON.parse(req.body.attributeSets); // Parsez la chaîne JSON ici
       // const attributes = req.body.attributeSets;
     console.log(attributes);
@@ -54,7 +58,7 @@ import mongoose from 'mongoose';
       description: req.body.description,
       // status: req.body.status,
       ownedBy: req.params.vendorId,
-      image: `${req.file.filename}`,
+      image: imageFile.path,
       attributeSets: attributeSets,
     };
   

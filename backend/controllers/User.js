@@ -32,7 +32,7 @@ import { generatorOTP } from "./utils/mail.js";
         password: headPassword,
         // confirmPassword: headPassword,
         phone: req.body.phone,
-        mail: req.body.mail,
+        email: req.body.email,
         status: req.body.status,
 
         //  image: `${req.protocol}://${req.get("host")}/img/${req.file.filename}`,
@@ -44,7 +44,7 @@ import { generatorOTP } from "./utils/mail.js";
             password: newUser.password,
             // confirmPassword: newUser.confirmPassword,
             phone: newUser.phone,
-            mail: newUser.mail,
+            email: newUser.email,
             status: newUser.status,
 
             //  image: newUser.image,
@@ -90,7 +90,7 @@ export async function logIn  (req,res){
           firstname: user.firstname,
           // lastname: user.lastname,
           phone: user.phone,
-          mail: user.mail,
+          email: user.email,
           status: user.status,
           // confirmPassword: user.confirmPassword,
           password: user.password, 
