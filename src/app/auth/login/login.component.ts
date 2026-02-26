@@ -76,11 +76,12 @@ submit() {
 
       console.log('User is logged in');
       // Check user's role based on the roles string
-      if (this.user.roles === 'vendeur') {
-        this.router.navigate([`dashboardVendeur/${localStorage.getItem('user_id')}`]);
-      } else if (this.user.roles === 'client') {
-         this.router.navigate(['/accueil'])
-      } else {
+if (this.user.roles === 'vendeur') {
+  const vendorId = localStorage.getItem('user_id');
+  window.location.href = `https://ecommercemultivendeurdashbord.vercel.app/listproduct/${vendorId}`;
+} else if (this.user.roles === 'client') {
+  this.router.navigate(['/accueil']);
+} else {
         console.log('Unknown role');
       }
     },
