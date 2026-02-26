@@ -33,7 +33,7 @@
     "moment": "^2.29.4",
     "ng2-charts": "^3.1.2",
     "ng2-file-upload": "^1.4.0",
-    "ngx-captcha": "^9.0.0",
+    "ngx-captcha": "^11.0.0",
     "ngx-cookie-service": "^13.2.1",
     "ngx-socket-io": "^4.0.0",
     "ngx-stripe": "^13.0.0",
