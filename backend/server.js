@@ -104,14 +104,12 @@ import AuthRoutes from './routes/auth.js';
 import RoleRoutes from './routes/role.js';
 import OrdersRoutes from './routes/order.js'; //importer le router du fichier routes/game.js
 import ProductsRoutes from './routes/Product.js'; 
-import AuthRoutes from './routes/auth.js';
 import CommandesRoutes from './routes/commande.js';
-import RoleRoutes from './routes/role.js';
 import CategoryRoutes from './routes/category.js';
 
 const app = express();
 const port = process.env.PORT || 9090;
-const FRONTEND_URL = 'ecommercemultivendeur.vercel.app';
+const FRONTEND_URL = 'https://ecommercemultivendeur.vercel.app';
 
 
 // =======================
