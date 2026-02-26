@@ -99,7 +99,7 @@ import { config as dotenvConfig } from 'dotenv';
 
 dotenvConfig();
 
-import { notFoundError, errorHandler } from './middelware/error-handler.js';
+import { notFoundError, errorHandler } from './middlewares/error-handler.js';
 import AuthRoutes from './routes/auth.js';
 import RoleRoutes from './routes/role.js';
 import OrdersRoutes from './routes/order.js'; //importer le router du fichier routes/game.js
