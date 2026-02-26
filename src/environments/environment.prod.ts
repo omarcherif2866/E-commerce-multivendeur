@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://foodbackend-omega.vercel.app'
+  apiUrl: 'https://ecommercemultivendeur.vercel.app'
 };
