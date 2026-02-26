@@ -40,7 +40,7 @@ const signup = async (req, res) => {
       email,
       password: hashedPassword,
       roles: selectedRole._id, // Assignez le rôle ici
-      image: imageFile.filename
+      image:  imageFile.path,
     });
     user.statusUser = 'nonConfirmé';
     user.statusCompte = 'actif';
