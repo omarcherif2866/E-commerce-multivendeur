@@ -4,50 +4,52 @@ import { Observable } from 'rxjs';
 import { Product } from '../models/product';
 import { User } from '../models/user';
 import { Category } from '../models/category';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServiceService {
+      private apiUrl = environment.apiUrl;
 
 
 
   constructor(private http: HttpClient) { }
 
   addProduct(data:any, vendorId:any):Observable<Product>{
-    return this.http.post<Product>("http://localhost:9090/product/venodrProduct/"+vendorId,data)
+    return this.http.post<Product>(`${this.apiUrl}/product/venodrProduct/${vendorId}`,data)
   }
 
   getProduct(){
-    return this.http.get<Product[]>("http://localhost:9090/product/")
+    return this.http.get<Product[]>(`${this.apiUrl}/product/`)
   }
 
   putProduct(id: any, data: FormData): Observable<Product> {
-    return this.http.put<Product>(`http://localhost:9090/product/${id}`, data);
+    return this.http.put<Product>(`${this.apiUrl}/product/${id}`, data);
   }
 
 
   deleteProduct(id:any):Observable<Product>{
-    return this.http.delete<Product>("http://localhost:9090/product/"+id)
+    return this.http.delete<Product>(`${this.apiUrl}/product/${id}`)
 
   }
 
   createAcount(data:any){
-    return this.http.post<User>("http://localhost:9090/api/signup",data)
+    return this.http.post<User>(`${this.apiUrl}/api/signup`,data)
   }
 
 
   signIn(credentials:any): Observable<User>{
-    return this.http.post<User>("http://localhost:9090/api/signin",credentials)
+    return this.http.post<User>(`${this.apiUrl}/api/signin`,credentials)
   }
 
   updateProfile(data:any,id:any){
-    return  this.http.put('http://localhost:3000/users/'+id,data)
+    return  this.http.put(`${this.apiUrl}/users/${id}`,data)
   }
 
   getUserById(id: any): Observable<User> {
-    return this.http.get<User>('http://localhost:9090/api/user/' + id);
+    return this.http.get<User>(`${this.apiUrl}/api/user/${id}`);
   }
 
 
@@ -56,12 +58,12 @@ export class ServiceService {
   // }
 
   getAllProducts(): Observable<Array<Product>>{
-    return this.http.get<Array<Product>>('http://localhost:9090/product')
+    return this.http.get<Array<Product>>(`${this.apiUrl}/product`)
   }
 
   getAllCategories(): Observable<Array<Category>>{
     return this.http.get<Array<Category>>(
-      'http://localhost:9090/category'
+      `${this.apiUrl}/category`
     )
   }
 
@@ -70,27 +72,27 @@ export class ServiceService {
   }
 
   getProductsById(id:any) {
-    return this.http.get('http://localhost:9090/product/'+id)
+    return this.http.get(`${this.apiUrl}/product/${id}`)
   }
 
   getProductsByvendor(id: string): Observable<Product[]> {
-    return this.http.get<Product[]>('http://localhost:9090/product/venodrProduct/' + id);
+    return this.http.get<Product[]>(`${this.apiUrl}/product/venodrProduct/${id}`);
   }
 
   getProductsByCategory(categoryId:any) : Observable<Product[]> {
-    return this.http.get<Product[]>('http://localhost:9090/product/categories/' + categoryId)
+    return this.http.get<Product[]>(`${this.apiUrl}/product/categories/${categoryId}`)
   }
 
   addImages(formdata:any) {
-    return this.http.post<any>('http://localhost:9090/product/file', formdata)
+    return this.http.post<any>(`${this.apiUrl}/product/file`, formdata)
   }
 
   getAttributesByCategory(categoryId: any): Observable<any[]> {
-    return this.http.get<any[]>(`http://localhost:9090/product/${categoryId}/attributes`);
+    return this.http.get<any[]>(`${this.apiUrl}/product/${categoryId}/attributes`);
   }
 
   getProductsByVendorAndStatus(id: any): Observable<Product[]> {
-    return this.http.get<Product[]>('http://localhost:9090/product/venodrProduct/status/' + id);
+    return this.http.get<Product[]>(`${this.apiUrl}/product/venodrProduct/status/${id}`);
   }
 
 }

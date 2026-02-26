@@ -4,11 +4,13 @@ import { NavigationStart, Router } from '@angular/router';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { Role } from 'src/app/Models/role';
 import { User } from 'src/app/Models/user';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  private apiUrl = environment.apiUrl;
   private loggedInSubject: BehaviorSubject<boolean>;
   private previousUrl: string = '/'; // Initialisez l'URL précédente avec '/' par défaut
 
@@ -26,13 +28,13 @@ export class AuthService {
   }
 
   createAcount(data:any){
-    return this.http.post<User>("http://localhost:9090/api/signup",data)
+    return this.http.post<User>(`${this.apiUrl}/api/signup`,data)
   }
 
 
 
   signIn(credentials: any): Observable<User> {
-    return this.http.post<User>("http://localhost:9090/api/signin", credentials).pipe(
+    return this.http.post<User>(`${this.apiUrl}/api/signin`, credentials).pipe(
       tap((user) => {
         // Mettez à jour l'état de connexion à true dès que l'utilisateur se connecte avec succès
         this.setLoggedIn(true);
@@ -50,11 +52,11 @@ export class AuthService {
   
 
   getRoles() {
-    return this.http.get<Role[]>("http://localhost:9090/role/roles");
+    return this.http.get<Role[]>(`${this.apiUrl}/role/roles`);
   }
 
   getUser(data:any) {
-    return this.http.get<User[]>("http://localhost:9090/api/user");
+    return this.http.get<User[]>(`${this.apiUrl}/api/user`);
   }
 
   setLoggedIn(status: boolean) {
@@ -72,7 +74,7 @@ export class AuthService {
   }
 
   getUserProfile(id:any) {
-    return this.http.get('http://localhost:9090/api/user/'+id)
+    return this.http.get(`${this.apiUrl}/api/user/${id}`)
   }
 
   logout(): void {
@@ -89,9 +91,9 @@ export class AuthService {
     // }
 
     // const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    // const url = `http://localhost:9090/api/user//profile/${id}`;
+    // const url = `${this.apiUrl}/api/user/profile/${id}`;
 
-    return this.http.put<User>(`http://localhost:9090/api/user/profile/${id}`, formData);
+    return this.http.put<User>(`${this.apiUrl}/api/user/profile/${id}`, formData);
   }
 
   updateUserPassword(id: any, password: string, newPassword: string): Observable<any> {
@@ -100,11 +102,11 @@ export class AuthService {
       newpassword: newPassword
     };
   
-    return this.http.put<any>(`http://localhost:9090/api/user/password/${id}`, data);
+    return this.http.put<any>(`${this.apiUrl}/api/user/password/${id}`, data);
   }
 
   resetPassword(data:any){
-    return this.http.post('http://localhost:9090/api/user/getforgot-password',data)
+    return this.http.post(`${this.apiUrl}/api/user/getforgot-password`,data)
 
   }
   

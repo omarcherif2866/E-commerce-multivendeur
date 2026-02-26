@@ -4,12 +4,14 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Cart, CartItem } from 'src/app/Models/cart';
 import { Attribute } from 'src/app/Models/product';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
+  private apiUrl = environment.apiUrl;
 
   public cartSubject = new BehaviorSubject<Cart>({ items: [] });
   cart: Observable<Cart> = this.cartSubject.asObservable();  constructor(private _snackBar: MatSnackBar, private http: HttpClient) { }
@@ -115,7 +117,7 @@ export class CartService {
 
   getOrdersForVendor(vendorId: string): Observable<any> {
     // Remplacez l'URL par l'API appropriée pour récupérer les commandes pour le vendeur spécifique
-    const url = `http://localhost:9090/vendor/${vendorId}/orders`;
+    const url = `${this.apiUrl}/vendor/${vendorId}/orders`;
 
     return this.http.get<any>(url);
   }
@@ -133,7 +135,7 @@ checkOut(data: any, clientId: any): Observable<any> {
     items: cartItemsWithAttributes
   };
 
-  return this.http.post<any>("http://localhost:9090/commande/create/" + clientId, updatedData);
+  return this.http.post<any>(`${this.apiUrl}/commande/create/${clientId}`, updatedData);
 }
 
 
