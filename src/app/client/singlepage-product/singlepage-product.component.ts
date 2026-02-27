@@ -52,7 +52,7 @@ export class SinglepageProductComponent implements OnInit {
   @ViewChild('inputnoter5') inputnoter5!: ElementRef;
 
   id: any;
-  data: any = {};
+data: any = null;
   @Input() product: Product | undefined;
   itemsQuantity = 0;
   private _cart: Cart = { items: [] };
