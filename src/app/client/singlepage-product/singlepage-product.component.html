@@ -154,29 +154,16 @@
               </div>
             </div>
           </div>
-          <section class="tab-product m-0">
-            <div class="row">
-              <div class="col-sm-12 col-lg-12">
-<ul class="nav nav-tabs nav-material" id="top-tab" role="tablist">
-  <li class="nav-item">
-    <a class="nav-link active" id="profile-top-tab" data-bs-toggle="tab" href="#top-profile" role="tab" aria-selected="true">
-      <i class="icofont icofont-ui-home"></i>Specification
-    </a>
-    <div class="material-border"></div>
-  </li>
-</ul>
-
-<!-- ✅ Ajoute ce wrapper tab-content -->
-<div class="tab-content">
-  <div class="tab-pane fade show active" id="top-profile" role="tabpanel">
-    <div class="col-md-7 col-sm-12">
-      <div class="info">
-        <div *ngIf="data">
+<section class="tab-product m-0">
+  <div class="row">
+    <div class="col-sm-12 col-lg-12">
+      <h5 class="title-border">Specification</h5>
+      <div class="col-md-7 col-sm-12">
+        <div class="info" *ngIf="data">
           <div class="row"><strong class="col-6">Nom du produit :</strong> <span class="col-6">{{data.name}}</span></div>
           <div class="row"><strong class="col-6">Categorie :</strong> <span class="col-6">{{data.category?.name}}</span></div>
           <div class="row"><strong class="col-6">Description :</strong> <span class="col-6">{{data.description}}</span></div>
           <div class="row"><strong class="col-6">Caractéristiques :</strong></div>
-
           <div *ngFor="let attributeSet of data.attributeSets">
             <div *ngFor="let attribute of attributeSet" class="row">
               <strong class="col-6">{{ attribute.name }}:</strong>
@@ -196,16 +183,12 @@
               </ng-template>
             </div>
           </div>
-
           <div class="row"><strong class="col-6">Prix :</strong> <span class="col-6">{{data.price}} Dt</span></div>
         </div>
       </div>
     </div>
   </div>
-</div>
-              </div>
-            </div>
-          </section>
+</section>
           
 
 
