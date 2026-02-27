@@ -46,7 +46,7 @@
               <div>
                 <div class="media" >
                   <div class="theme-card">
-                    <img [src]="data.image" class="img-fluid" alt="plat-img"  >
+                    <img [src]="data?.image" class="img-fluid" alt="plat-img"  >
                   </div>
 
                 </div>
@@ -167,13 +167,13 @@
                 </ul>   
                 <div class="col-md-7 col-sm-12">
                   <div class="info" >
-                    <pre>{{ data | json }}</pre>
+                    <!-- <pre>{{ data | json }}</pre> -->
 <ul class="list-unstyled" *ngIf="data">
   <li class="row"><strong class="col-6">Nom du produit :</strong> <span class="col-6">{{data.name}}</span></li>
   <li class="row"><strong class="col-6">Categorie :</strong> <span class="col-6">{{data.category?.name}}</span></li>
   <li class="row"><strong class="col-6">Description :</strong> <span class="col-6">{{data.description}}</span></li>
   <li class="row"><strong class="col-6">Caractéristiques :</strong></li>
-
+<pre>{{ data.attributeSets | json }}</pre>
   <!-- ✅ ng-container ne génère aucun élément DOM -->
   <ng-container *ngFor="let attributeSet of data.attributeSets">
     <li *ngFor="let attribute of attributeSet" class="row">
