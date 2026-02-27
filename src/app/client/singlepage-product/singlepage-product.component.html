@@ -173,9 +173,10 @@
   <li class="row"><strong class="col-6">Categorie :</strong> <span class="col-6">{{data.category?.name}}</span></li>
   <li class="row"><strong class="col-6">Description :</strong> <span class="col-6">{{data.description}}</span></li>
   <li class="row"><strong class="col-6">Caractéristiques :</strong></li>
-<pre>{{ data.attributeSets | json }}</pre>
+<!-- <pre>{{ data.attributeSets | json }}</pre> -->
   <!-- ✅ ng-container ne génère aucun élément DOM -->
-  <ng-container *ngFor="let attributeSet of data.attributeSets">
+<li *ngFor="let attributeSet of data.attributeSets">
+  <ul>
     <li *ngFor="let attribute of attributeSet" class="row">
       <strong class="col-6">{{ attribute.name }}:</strong>
       <ng-container *ngIf="attribute.name === 'stock'; else otherAttributes">
@@ -193,7 +194,8 @@
         <span class="col-6">{{ attribute.value }}</span>
       </ng-template>
     </li>
-  </ng-container>
+  </ul>
+</li>
 
   <li class="row"><strong class="col-6">Prix :</strong> <span class="col-6">{{data.price}} Dt</span></li>
 </ul>
