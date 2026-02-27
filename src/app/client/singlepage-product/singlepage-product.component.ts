@@ -457,24 +457,23 @@ data: any = null;
   //   return this.data.image ? `http://localhost:9090/img/${this.data.image}` : '';
   // }
 
-  getProducts() {
-    this.service.getProductsById(this.id).subscribe(
-      (res) => {
-        this.data = res;
-        console.log('Product details:', this.data);
-        this.category$ = this.categoryService.getCategoryById(this.data.category);
-        this.category$.subscribe(category => {
-          this.data = { ...this.data, category }; // ✅ crée un nouvel objet
-            console.log('attributeSets après spread:', this.data.attributeSets); // ← ajoute ça
-          this.cdr.detectChanges(); // ✅ force le re-rendu
-        });
-        console.log("Product with category:", this.data);
-      },
-      (error) => {
-        console.error("Error fetching product:", error);
-      }
-    );
-  }
+getProducts() {
+  this.service.getProductsById(this.id).subscribe(
+    (res) => {
+      this.data = res;
+      const categoryId = this.data.category;
+      
+      this.categoryService.getCategoryById(categoryId).subscribe(category => {
+        this.data = { ...this.data, category };
+        console.log('✅ data complet:', JSON.stringify(this.data.attributeSets)); // ← ici
+        this.cdr.detectChanges();
+      });
+    },
+    (error) => {
+      console.error("Error fetching product:", error);
+    }
+  );
+}
 
   onAddToCart(attributeSet: Attribute[]) {
     console.log("Adding to cart:", attributeSet);
