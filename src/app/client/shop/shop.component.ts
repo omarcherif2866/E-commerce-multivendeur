@@ -108,6 +108,7 @@ export class ShopComponent implements OnInit {
     this.productsSubscription = this.productService.getAllProducts().subscribe((_products) => {
       this.products = _products;
       this.cdr.detectChanges(); // Force la mise à jour de la vue
+      console.log(this.products);
     });
   }
 
