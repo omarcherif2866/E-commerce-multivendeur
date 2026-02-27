@@ -452,10 +452,10 @@ data: any = null;
 
 
 
-  getPlatImageUrl(images: string): string {
-    // Vérifiez si data.image existe avant de construire l'URL
-    return this.data.image ? `http://localhost:9090/img/${this.data.image}` : '';
-  }
+  // getPlatImageUrl(images: string): string {
+  //   // Vérifiez si data.image existe avant de construire l'URL
+  //   return this.data.image ? `http://localhost:9090/img/${this.data.image}` : '';
+  // }
 
   getProducts() {
     this.service.getProductsById(this.id).subscribe(
@@ -465,6 +465,7 @@ data: any = null;
         this.category$ = this.categoryService.getCategoryById(this.data.category);
         this.category$.subscribe(category => {
           this.data = { ...this.data, category }; // ✅ crée un nouvel objet
+            console.log('attributeSets après spread:', this.data.attributeSets); // ← ajoute ça
           this.cdr.detectChanges(); // ✅ force le re-rendu
         });
         console.log("Product with category:", this.data);
