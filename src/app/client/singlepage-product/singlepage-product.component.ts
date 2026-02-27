@@ -456,21 +456,13 @@ data: any = null;
   //   // Vérifiez si data.image existe avant de construire l'URL
   //   return this.data.image ? `http://localhost:9090/img/${this.data.image}` : '';
   // }
-
 getProducts() {
   this.service.getProductsById(this.id).subscribe(
     (res) => {
       this.data = res;
-      const categoryId = this.data.category;
-      
-      this.categoryService.getCategoryById(categoryId).subscribe(category => {
-        this.data = { ...this.data, category };
-        console.log('✅ data complet:', JSON.stringify(this.data.attributeSets)); // ← ici
-        this.cdr.detectChanges();
-      });
-    },
-    (error) => {
-      console.error("Error fetching product:", error);
+      console.log('attributeSets:', JSON.stringify(this.data.attributeSets));
+      console.log('data est null?', this.data === null);
+      this.cdr.detectChanges();
     }
   );
 }
