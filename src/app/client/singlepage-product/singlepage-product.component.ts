@@ -84,6 +84,7 @@ export class SinglepageProductComponent implements OnInit {
   idProduit: any;
   countlike: any;
   numberRate: number = 0;
+
   constructor(
     private ScriptServiceService: ScriptService,
     private _router: Router,
@@ -463,9 +464,8 @@ export class SinglepageProductComponent implements OnInit {
         console.log('Product details:', this.data);
         this.category$ = this.categoryService.getCategoryById(this.data.category);
         this.category$.subscribe(category => {
-          this.data.category = category;
-          console.log('attributeSets:', this.data.attributeSets); // ← vérifie ici
-
+          this.data = { ...this.data, category }; // ✅ crée un nouvel objet
+          this.cdr.detectChanges(); // ✅ force le re-rendu
         });
         console.log("Product with category:", this.data);
       },
