@@ -169,7 +169,7 @@
                   <div class="info">
                     <ul class="list-unstyled">
                       <li class="row"><strong class="col-6">Nom du produit :</strong> <span class="col-6">{{data.name}}</span></li>
-                      <li class="row"><strong class="col-6">Categorie :</strong> <span class="col-6">{{ (category$ | async)?.name }}</span></li>
+                      <li class="row"><strong class="col-6">Categorie :</strong> <span class="col-6"><p>{{data.category?.name}}</p></span></li>
                       <li class="row"><strong class="col-6">Description :</strong> <span class="col-6">{{data.description}}</span></li>
                       <li class="row"><strong class="col-6">Caractéristiques :</strong></li>
                       <div *ngFor="let attributeSet of data.attributeSets">

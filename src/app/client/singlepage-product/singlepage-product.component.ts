@@ -464,6 +464,8 @@ export class SinglepageProductComponent implements OnInit {
         this.category$ = this.categoryService.getCategoryById(this.data.category);
         this.category$.subscribe(category => {
           this.data.category = category;
+          console.log('attributeSets:', this.data.attributeSets); // ← vérifie ici
+
         });
         console.log("Product with category:", this.data);
       },
