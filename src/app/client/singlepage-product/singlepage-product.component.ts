@@ -52,7 +52,8 @@ export class SinglepageProductComponent implements OnInit {
   @ViewChild('inputnoter5') inputnoter5!: ElementRef;
 
   id: any;
-data: any = null;
+data: any = { attributeSets: [] }; // ← au lieu de null
+
   @Input() product: Product | undefined;
   itemsQuantity = 0;
   private _cart: Cart = { items: [] };
@@ -459,10 +460,12 @@ data: any = null;
 getProducts() {
   this.service.getProductsById(this.id).subscribe(
     (res) => {
-      this.data = res;
+      this.data = { ...res }; // ← Nouvelle référence pour forcer la détection
       console.log('attributeSets:', JSON.stringify(this.data.attributeSets));
-      console.log('data est null?', this.data === null);
-      this.cdr.detectChanges();
+      this.cdr.markForCheck(); // ← Utiliser markForCheck() plutôt que detectChanges()
+    },
+    (err) => {
+      console.error('Erreur getProducts:', err);
     }
   );
 }

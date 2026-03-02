@@ -159,7 +159,7 @@
     <div class="col-sm-12 col-lg-12">
       <h5 class="title-border">Specification</h5>
       <div class="col-md-7 col-sm-12">
-        <div class="info" *ngIf="data">
+        <div class="info" *ngIf="data && data.attributeSets">
           <div class="row"><strong class="col-6">Nom du produit :</strong> <span class="col-6">{{data.name}}</span></div>
           <div class="row"><strong class="col-6">Categorie :</strong> <span class="col-6">{{data.category?.name}}</span></div>
           <div class="row"><strong class="col-6">Description :</strong> <span class="col-6">{{data.description}}</span></div>
