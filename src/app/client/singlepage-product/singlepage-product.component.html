@@ -155,6 +155,13 @@
             </div>
           </div>
 <section class="tab-product m-0">
+    <pre>{{ data | json }}</pre>
+<div *ngFor="let attributeSet of data?.attributeSets">
+  <p>attributeSet: {{ attributeSet | json }}</p>
+  <div *ngFor="let attribute of attributeSet">
+    <p>attribute: {{ attribute | json }}</p>
+  </div>
+</div>
   <div class="row">
     <div class="col-sm-12 col-lg-12">
       <h5 class="title-border">Specification</h5>

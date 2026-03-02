@@ -8,7 +8,7 @@ import {
   ChangeDetectorRef,
 } from '@angular/core';
 import { ScriptService } from '../../Service/script/script.service';
-import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd,NgZone } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { Emitters } from 'src/app/emitters/emitter';
@@ -20,6 +20,7 @@ import { CategoryService } from 'src/app/Service/category/category.service';
 import { Attribute, Product } from 'src/app/Models/product';
 import { Cart, CartItem } from 'src/app/Models/cart';
 import { CartService } from 'src/app/Service/cart/cart.service';
+
 const SCRIPT_PATH_LIST = [
   'assets/client/js/jquery-3.3.1.min.js',
 
@@ -98,7 +99,9 @@ data: any = { attributeSets: [] }; // ← au lieu de null
     private http: HttpClient,
     private currentRoute: ActivatedRoute,
     private router: Router,
-    private SocketIOServiceService: SocketIOServiceService
+    private SocketIOServiceService: SocketIOServiceService,
+      private ngZone: NgZone
+
   ) {
     this.route = this._router.url;
 
@@ -460,12 +463,10 @@ data: any = { attributeSets: [] }; // ← au lieu de null
 getProducts() {
   this.service.getProductsById(this.id).subscribe(
     (res) => {
-      this.data = { ...res }; // ← Nouvelle référence pour forcer la détection
-      console.log('attributeSets:', JSON.stringify(this.data.attributeSets));
-      this.cdr.markForCheck(); // ← Utiliser markForCheck() plutôt que detectChanges()
-    },
-    (err) => {
-      console.error('Erreur getProducts:', err);
+      this.ngZone.run(() => {
+        this.data = res;
+        console.log('data dans NgZone:', this.data);
+      });
     }
   );
 }
