@@ -6,9 +6,10 @@ import {
   ElementRef,
   Input,
   ChangeDetectorRef,
+  NgZone
 } from '@angular/core';
 import { ScriptService } from '../../Service/script/script.service';
-import { ActivatedRoute, Router, NavigationEnd,NgZone } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { Emitters } from 'src/app/emitters/emitter';
