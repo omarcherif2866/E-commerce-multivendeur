@@ -155,13 +155,12 @@
             </div>
           </div>
 <section class="tab-product m-0">
-    <pre>{{ data | json }}</pre>
-<div *ngFor="let attributeSet of data.attributeSets">
+<!-- <div *ngFor="let attributeSet of data.attributeSets">
   <div *ngFor="let attribute of attributeSet" class="row">
     <strong class="col-6">{{ attribute.name }}</strong>
     <span class="col-6">{{ attribute.value }}</span>
   </div>
-</div>
+</div> -->
   <div class="row">
     <div class="col-sm-12 col-lg-12">
       <h5 class="title-border">Specification</h5>
@@ -171,25 +170,35 @@
           <div class="row"><strong class="col-6">Categorie :</strong> <span class="col-6">{{data.category?.name}}</span></div>
           <div class="row"><strong class="col-6">Description :</strong> <span class="col-6">{{data.description}}</span></div>
           <div class="row"><strong class="col-6">Caractéristiques :</strong></div>
-          <div *ngFor="let attributeSet of data.attributeSets">
-            <div *ngFor="let attribute of attributeSet" class="row">
-              <strong class="col-6">{{ attribute.name }}:</strong>
-              <ng-container *ngIf="attribute.name === 'stock'; else otherAttributes">
-                <span class="col-6" [ngClass]="{'in-stock': attribute.value > 0, 'out-of-stock': attribute.value <= 0}">
-                  {{ attribute.value > 0 ? 'En stock' : 'En rupture de stock' }}
-                  <div class="product-buttons">
-                    <a (click)="onAddToCart(attributeSet)" class="btn btn-solid hover-solid btn-animation">
-                      <i class="fa fa-shopping-cart me-1" *ngIf="attribute.value > 0"></i>
-                      Ajouter au panier
-                    </a>
-                  </div>
-                </span>
-              </ng-container>
-              <ng-template #otherAttributes>
-                <span class="col-6">{{ attribute.value }}</span>
-              </ng-template>
-            </div>
-          </div>
+<div *ngFor="let attributeSet of data.attributeSets" class="row mb-3 border-bottom pb-2">
+  
+  <div *ngFor="let attribute of attributeSet" class="row">
+    
+    <!-- Stock : affichage spécial -->
+    <ng-container *ngIf="attribute.name === 'stock'; else otherAttributes">
+      <strong class="col-6">{{ attribute.name }}:</strong>
+      <span class="col-6" [ngClass]="{'in-stock': attribute.value > 0, 'out-of-stock': attribute.value <= 0}">
+        {{ attribute.value > 0 ? 'En stock' : 'En rupture de stock' }}
+      </span>
+    </ng-container>
+
+    <!-- Tous les autres attributs : affichage générique -->
+    <ng-template #otherAttributes>
+      <strong class="col-6">{{ attribute.name }}:</strong>
+      <span class="col-6">{{ attribute.value }}</span>
+    </ng-template>
+
+  </div>
+
+  <!-- Bouton une seule fois par attributeSet -->
+  <div class="product-buttons mt-2">
+    <a (click)="onAddToCart(attributeSet)" class="btn btn-solid hover-solid btn-animation">
+      <i class="fa fa-shopping-cart me-1"></i>
+      Ajouter au panier
+    </a>
+  </div>
+
+</div>
           <div class="row"><strong class="col-6">Prix :</strong> <span class="col-6">{{data.price}} Dt</span></div>
         </div>
       </div>
